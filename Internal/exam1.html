@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Internals</title>
+       
+    </head>
+    <body>
+        <br><br>
+        <h1>Abhishek ANAND</h1>
+        <h3>USN:1NT18IS006</h3>
+        <h1>LandSlides in Karnataka</h1>
+        <form method="post">
+            <label>Location</label><br>
+            <input type="text" id ="lctn"placeholder="Enter  location" autocomplete="off" required="true"><br>
+            <label>Date</label><br>
+            <input type="text" id="dt" placeholder="Enter date" autocomplete="off" required="true"><br>
+            
+            <label>Details</label><br>
+            <input type="text" id="mf" placeholder="Enter Details" autocomplete="off" required="true"><br><br>
+            <button type="button" id="button" value="submit" onclick="onClick()">Submit</button>
+        </form>
+       
+        <button onclick="display()" id="button1" type="button">Show</button><br><br><br>
+
+        <input type="text" id="reg" placeholder="Region">
+        <br>
+        <button onclick="myfunc()">search</button>
+    <br>
+    <p id="demo"></p>
+    <p id="result"></p>
+    <br>
+    <p id="result1"></p>
+    <br>
+    <p id="result2"></p>
+</body>
+    
+    <script>
+        function myfunc()
+        {
+         const regions = [
+     { 
+        "name" :"Kalburgi",
+        "date":"AUG 2,2020",
+        "losses":"Heavy rains and flood causing the death of many people and many became homeless :("
+     },
+    { 
+        "name" :"Bijapur",
+        "date":"AUG 1,2020",
+        "losses":"Many became homeless and many trees fell causing death of more than 10 people :(("
+    },
+    {
+        "name" :"Kodagu",
+        "date":"AUG 08,2020",
+        "losses":"Five people, including a temple priest and his family members, are missing after heavy rain caused a landslide in Karnataka's Kodagu district. Many districts of the state have been badly hit by floods; Kodagu is one of the worst affected :(("
+    },
+    {
+        "name" :"Chikmagalur",
+        "date":"AUG 06, 2020",
+        "losses":"Heavy monsoon rains in Karnataka caused landslides near Mudigere in the Chikmagalur district.No loss of life or property was reported due to the landslide"
+    },
+   
+    {
+        "name":"Malnad",
+        "date": "Aug 12, 2020",
+        "losses":"Several parts of Malnad, coastal and interior Karnataka have been battered by rains, affecting lives and property.According to official data, 16 people in 12 affected districts have lost their lives so far since August 1, while four are missing. A total of 108 relief camps have been opened in these districts, where 3,244 people are taking shelter.Also, agriculture crops in about 33,477 hectares and horticulture crops in over 34,791 hectares have been affected. "
+
+    }
+    
+   
+]
+    let y = document.getElementById("reg").value;
+    let x =regions.find(regions=> regions.name=== y);
+    if(x==undefined)
+    {
+        document.getElementById("demo").innerHTML="No LandSlides happened in this region ";
+        document.getElementById("demo").style.backgroundColor="white";
+    }
+    else
+    {
+    let z = "Regions: "+x.name+"<br> "+"Date : "+x.date+" "+"<br>"+"Losses: "+x.losses;
+    document.getElementById("demo").innerHTML = z;
+    }
+}
+
+        const array =[];
+
+function onClick(){
+    var obj={};
+    obj.Location = document.getElementById('lctn').value;
+    obj.Date = document.getElementById('dt').value;
+    const chars = document.getElementById('mf').value;
+    let words = chars.split('.');
+    obj.Details = words;
+    array.push(obj)
+    console.log(array)
+}
+
+
+function display()
+{
+    for(let i=0;i<array.length;i++)
+    {
+        document.getElementById('result').innerHTML = array[i].Location;
+        document.getElementById('result1').innerHTML = array[i].Date;
+        document.getElementById('result2').innerHTML = array[i].Details;
+    }
+}
+    </script>
+   
+
+</html>
